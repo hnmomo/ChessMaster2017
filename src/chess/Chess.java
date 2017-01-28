@@ -22,7 +22,7 @@ public class Chess extends javax.swing.JFrame {
     FileReader in;
     BufferedReader readFile;
     JLabel [] [] gridboard= new JLabel [8][8];
-    Game game=new Game(true,1);
+    Game game=new Game();
     Player[] p=new Player[2];
     int moveNum=0,selectX=-1,selectY=-1,aiNum=1;
     boolean pieceSelected=false;
@@ -411,7 +411,7 @@ public class Chess extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(chessPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 46, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(33, 33, 33)
                 .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -676,21 +676,6 @@ public class Chess extends javax.swing.JFrame {
         int x=Integer.parseInt(xin.getText())-1,a=Integer.parseInt(ain.getText())-1,y,b;
         y=(int)yInput.charAt(0)-65;
         b=(int)bInput.charAt(0)-65;
-       /* p[moveNum].move(x,y,a,b,game);
-        if(game.b.board[a][b][moveNum]!=null){
-            if(aiChoosed){
-                ((AI)p[aiNum]).calculateMove(3,game);
-            }else{
-                moveNum=(moveNum-1)*(moveNum-1);
-                if(winCheck()&&moveNum==1){
-                    jLabel6.setIcon(new ImageIcon("src/chess/checkmate1.png"));
-                }
-                if(winCheck()&&moveNum==0){
-                    jLabel6.setIcon(new ImageIcon("src/chess/checkmate2.png"));
-                }
-            }
-        }
-        display();*/
        boolean check=true;
        game.saveUndo();
             p[moveNum].move(x,y,a,b,game);

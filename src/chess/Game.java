@@ -12,20 +12,31 @@ package chess;/*
 public class Game {
     
     Board b,undoBoard;
-    boolean t;
-    int n;
     public boolean[][]validMove=new boolean[8][8];
-    public Game(boolean t,int n){
-        this.t=t;
-        this.n=n;
+    /**
+     * constructor
+     * pre:
+     * post:create a new game with a new board
+     */
+    public Game(){
         b=new Board();
     }
+    /**
+     * constructor
+     * pre:
+     * post:create a new game with a specified board
+     */
     public Game(Board b){
         this.b=b.clone();
     }
-    public void Move(int a,int c,int x,int y,int p){//n is piece number
-        //GOTTA INCLUDE PAWN->QUEEN RULE
+    /**
+     * move the piece
+     * pre:a,b coordinates of initial position, x,y end position, p is player number
+     * post:move piece from a,b to x,y
+     */
+    public void Move(int a,int c,int x,int y,int p){
         validMove=b.analyzeBoard(p,a,c);
+        //rules for pawns and en passant
         if(validMove[x][y]){
             if(b.board[a][c][p]==Piece.ENPASSANT){
                 b.board[a][c][p]=Piece.PAWN;
@@ -47,10 +58,20 @@ public class Game {
             b.board[a][c][p]=null;
         }
     }
+    /**
+     * make a copy of the game
+     * pre: 
+     * post: a cloned game
+     */
     public Game clone(){
         Game g=new Game(b);
         return g;
     }
+    /**
+     * save this move
+     * pre: 
+     * post: save board into undoBoard
+     */
     public void saveUndo(){
         undoBoard=b.clone();
     }

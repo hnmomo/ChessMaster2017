@@ -43,7 +43,7 @@ public class Start extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         exitButton = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
-        modeComboBox = new javax.swing.JComboBox<String>();
+        modeComboBox = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
@@ -92,7 +92,7 @@ public class Start extends javax.swing.JFrame {
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Game Mode");
 
-        modeComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Classic", "Fog of War", "Friendly to Newbs" }));
+        modeComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Classic", "Fog of War", "Friendly to Newbs" }));
         modeComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 modeComboBoxActionPerformed(evt);
@@ -160,9 +160,9 @@ public class Start extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(backgroundPanelLayout.createSequentialGroup()
-                        .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(colorComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(colorComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2))
                         .addGap(23, 23, 23)
                         .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(playButton)
@@ -229,7 +229,6 @@ public class Start extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
         try {
-         //Set your page url in this string. For eg, I m using URL for Google Search engine
          String url = "https://docs.google.com/document/d/1WtJh58iK4TxIBAWbkgBi7hYt1jLBNO3N-4yZz15Wc40";
          java.awt.Desktop.getDesktop().browse(java.net.URI.create(url));
        }

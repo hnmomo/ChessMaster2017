@@ -14,13 +14,25 @@ import java.util.ArrayList;
  * Kent Huang, Sylvia Byer
  */
 public class Human extends Player{
+    /**
+     * constructor
+     * pre:player number
+     * post:create a new Human object with corresponding playerNum
+     */
     public Human(int playerNum){
         super.playerNum=playerNum;
     }
+    /**
+     * move the piece
+     * pre:a,b coordinates of initial position, x,y end position, g is the current game
+     * post:move piece from a,b to x,y
+     */
     @Override
     public void move(int a,int b,int x,int y,Game g){
         g.Move(a,b, x, y,playerNum);
     }
+    //The following is exactly same as AI except it gives you the best move suggestion instead of actually moving
+    //it is used for friendly mode
     public ArrayList AI(int n,Game g,int pNum){
         boolean gotSomething=false;
         if(n==0){

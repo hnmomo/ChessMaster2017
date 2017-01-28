@@ -60,7 +60,7 @@ public class Board {
     /**
      * find numbers of each piece on board
      * pre:
-     * post:
+     * post:return the array containing information about number of pieces
      */
     public int[][] findNumberPieces(){
         int[][] pieceArray = new int[6][2];
@@ -85,6 +85,11 @@ public class Board {
         }
         return pieceArray;
     }
+    /**
+     * make a copy of an array, we have to do this because object oriented programming forces us to do this
+     * pre: array
+     * post: a cloned array
+     */
     public int[][] cloneArray(int[][] array){
         int[][] returnArray = new int[array.length][array[0].length];
         
@@ -95,6 +100,11 @@ public class Board {
         }
         return returnArray;
     }
+    /**
+     * find the value of board
+     * pre:
+     * post:return a value, positive in favour of black, negative in favour of white
+     */
     public double findBoardValue(){
         
         //use number of pieces on the board to determine stage
@@ -193,7 +203,11 @@ public class Board {
         value = value + midSquares + doublePawnValue() + edgeValue + pawns;
         return value;
     }
-    
+    /**
+     * determine if something is on the edge
+     * pre:coordinates of the piece
+     * post:return a boolean for that
+     */
     public boolean onEdge(int a, int b){
         
         boolean edge = false;
@@ -206,7 +220,11 @@ public class Board {
         }
         return edge;
     }
-    
+    /**
+     * calculate value for pawns
+     * pre:
+     * post:return the value for pawns
+     */
     public int doublePawnValue(){
         int value = 0;
         for(int p = 0; p < 2; p++){
@@ -226,7 +244,11 @@ public class Board {
         }
         return value;
     }
-    
+    /**
+     * calculate value for knight and pawn
+     * pre:
+     * post:return the value of knight and pawn
+     */
     public int midSquaresValue(){
         int midSquares = 0;
         for(int i = 3; i <= 4; i++){
@@ -264,7 +286,11 @@ public class Board {
         return midSquares;
     }
 
-    
+    /**
+     * find valid moves
+     * pre:player number, coordinates
+     * post:boolean array with valid moves being true
+     */
     public boolean[][] analyzeBoard(int p,int a,int b){
         boolean[][]r=new boolean[8][8];
         boolean[][]temp=analyzeWholeBoard((p-1)*(p-1),a,b);
@@ -452,6 +478,12 @@ public class Board {
         }
         return r;
     }
+    /**
+     * find valid moves for the whole board including opponent pieces
+     * pre:player number, coordinates
+     * post:find if the king is check if the piece at x,y is moved away
+     */
+    //the limitation here is we don't know where the piece at x,y is moved away, we can do a for loop in analyzeBoard for that(if we had more time)
     public boolean[][] analyzeWholeBoard(int p,int x,int y){
         boolean[][]r=new boolean[8][8];
         for(int i=0;i<8;i++){
@@ -638,6 +670,11 @@ public class Board {
         }
         return r;
     }
+    /**
+     * make a copy of a board, luckily the only field in the board class is board array
+     * pre: 
+     * post: a cloned board
+     */
     public Board clone(){
         Board b=new Board(board);
         return b;
